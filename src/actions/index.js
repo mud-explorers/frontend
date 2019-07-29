@@ -1,0 +1,13 @@
+//
+
+// roomAction types
+
+export const INIT_ROOM_FETCHING = 'INIT_ROOM_FETCHING'
+export const INIT_ROOM_SUCCESS = 'INIT_ROOM_SUCCESS'
+export const INIT_ROOM_FAILURE = 'INIT_ROOM_FAILURE'
+
+
+// playerAction types
+export const INIT_PLAYER_FETCHING = 'INIT_PLAYER_FETCHING'
+export const INIT_PLAYER_SUCCESS = 'INIT_PLAYER_SUCCESS'
+export const INIT_PLAYER_FAILURE = 'INIT_PLAYER_FAILURE'

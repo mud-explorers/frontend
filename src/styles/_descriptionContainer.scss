@@ -1,0 +1,117 @@
+.description_container {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+
+  p {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    font-family: "Roboto";
+    letter-spacing: 0px;
+    font-weight: 100px;
+  }
+
+  .room_description_container {
+    background: #d3e5e6;
+    color: #3b3f3f;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+
+    .room_id_and_coords {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+
+      h2 {
+        color: #7dcdbe;
+        font-size: 2rem;
+        font-family: "Montserrat", "sans-serif";
+        font-weight: bolder;
+      }
+    } // end room_id_and_coords
+  } // end room_description_container
+
+  .player_description_container {
+    background: #7dcdbe;
+    color: #3b3f3f;
+    padding: 4%;
+    min-height: 250px;
+
+    .name_and_gold {
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .spacer {
+      height: 8px;
+      border-radius: 18px;
+      width: 90%;
+      background: white;
+      margin: 20px auto;
+    }
+
+    .lower_player_description {
+      display: flex;
+
+      .player_stats {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+
+        h2 {
+          font-size: 1.6rem;
+          font-family: "Roboto", "sans-serif";
+          letter-spacing: 0px;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+
+          span {
+            color: white;
+          }
+        }
+      }
+
+      .inventory {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+          font-size: 1.6rem;
+          font-family: "Roboto", "sans-serif";
+          letter-spacing: 0px;
+          margin-bottom: 10px;
+        }
+        span {
+          background: #3b3f3f;
+          color: white;
+          border-radius: 4px;
+          width: 75%;
+          height: 30px;
+          margin-bottom: 5px;
+          font-size: 1.4rem;
+          font-family: "Roboto", "sans-serif";
+          letter-spacing: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  } // end player_description_container
+} // end description container
+
+.room_description_header {
+  font-size: 2rem;
+  margin-bottom: 5px;
+
+  span {
+    color: white;
+  }
+}
