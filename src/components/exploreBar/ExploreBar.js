@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import Counter from "./Counter";
 
-function ExploreBar({ roomInfo: { messages }, playerInfo }) {
+function ExploreBar({ roomInfo: { messages, errors, cooldown }, playerInfo }) {
   return (
     <div className="explore_bar_container">
       <div className="explore">
-        <h1>explore</h1>
+        <Counter />
       </div>
       <div className="explore_messages">
         {messages.map(message => (
@@ -13,6 +14,9 @@ function ExploreBar({ roomInfo: { messages }, playerInfo }) {
         ))}
         {playerInfo.messages.map(message => (
           <h1>{`${message} `}</h1>
+        ))}
+        {errors.map(error => (
+          <h1>{`${error} `}</h1>
         ))}
       </div>
     </div>

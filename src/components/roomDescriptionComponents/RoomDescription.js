@@ -18,16 +18,22 @@ function RoomDescription({
 
       <div className="items">
         <h1 className="room_description_header">Items</h1>
-        {items.length === 0
-          ? <p>There are no items in this room.</p>
-          : items.map((item, i) => <p key={i}>{item} </p>)}
+        <p>
+            {items.length === 0
+              ? "There are no items in this room."
+              : items.map(item => `${item} `)}
+          </p>
       </div>
 
       <div className="players">
         <h1 className="room_description_header">Players</h1>
-        {players.length === 0
-          ? <p>There are no items in this room.</p>
-          : players.map(player => <p key={player}>{player} </p>)}
+        <div className="player_name_container">
+          <p>
+            {players.length === 0
+              ? "There are no items in this room."
+              : players.map(player => `${player} `)}
+          </p>
+        </div>
       </div>
     </div>
   );

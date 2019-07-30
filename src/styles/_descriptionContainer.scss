@@ -31,6 +31,14 @@
         font-weight: bolder;
       }
     } // end room_id_and_coords
+
+    .players {
+      .player_name_container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
   } // end room_description_container
 
   .player_description_container {

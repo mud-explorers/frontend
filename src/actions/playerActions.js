@@ -2,9 +2,8 @@ import axios from "axios";
 import {
   INIT_PLAYER_SUCCESS,
   INIT_PLAYER_FETCHING,
-  INIT_PLAYER_FAILURE
+  INIT_PLAYER_FAILURE,
 } from "./index";
-
 
 export const getPlayer = () => dispatch => {
   dispatch({
@@ -13,7 +12,8 @@ export const getPlayer = () => dispatch => {
 
   return axios
     .post(
-      "https://lambda-treasure-hunt.herokuapp.com/api/adv/status/", {},
+      "https://lambda-treasure-hunt.herokuapp.com/api/adv/status/",
+      {},
 
       {
         headers: {
@@ -35,3 +35,5 @@ export const getPlayer = () => dispatch => {
       });
     });
 };
+
+
