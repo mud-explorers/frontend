@@ -63,6 +63,8 @@
 
     .lower_player_description {
       display: flex;
+      min-height: 148px;
+
 
       .player_stats {
         width: 50%;
@@ -100,10 +102,10 @@
           background: #3b3f3f;
           color: white;
           border-radius: 4px;
-          width: 75%;
-          height: 30px;
+          width: 65%;
+          height: 20%;
           margin-bottom: 5px;
-          font-size: 1.4rem;
+          font-size: 1.3rem;
           font-family: "Roboto", "sans-serif";
           letter-spacing: 0px;
           display: flex;

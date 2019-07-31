@@ -3,32 +3,39 @@ import { connect } from "react-redux";
 import { validExit } from "../../helper-functions/display-functions";
 import { moveRoom, getItem, sellItem } from "../../actions/roomActions";
 
-function ActionBar({ roomInfo: { exits, items, title }, playerInfo: {inventory}, moveRoom, getItem, sellItem }) {
+function ActionBar({
+  roomInfo: { exits, items, title },
+  playerInfo: { inventory },
+  moveRoom,
+  getItem,
+  sellItem,
+  coolingDown
+}) {
   return (
     <div className="action_bar_container">
       <h1
-        onClick={() => moveRoom("n", exits)}
-        className={validExit("n", exits)}
-      >
-        N
-      </h1>
-      <h1
-        onClick={() => moveRoom("s", exits)}
-        className={validExit("s", exits)}
-      >
-        S
-      </h1>
-      <h1
-        onClick={() => moveRoom("e", exits)}
-        className={validExit("e", exits)}
+        onClick={!coolingDown ? () => moveRoom("n", exits) : null}
+        className={!coolingDown && validExit("n", exits) ? 'active' : ''}
       >
         E
       </h1>
       <h1
-        onClick={() => moveRoom("w", exits)}
-        className={validExit("w", exits)}
+        onClick={!coolingDown ? () => moveRoom("s", exits) : null}
+        className={!coolingDown && validExit("s", exits) ? 'active' : ''}
       >
         W
+      </h1>
+      <h1
+        onClick={!coolingDown ? () => moveRoom("e", exits) : null}
+        className={!coolingDown && validExit("e", exits) ? 'active' : ''}
+      >
+        S
+      </h1>
+      <h1
+        onClick={!coolingDown ? () => moveRoom("w", exits) : null}
+        className={!coolingDown && validExit("w", exits) ? 'active' : ''}
+      >
+        N
       </h1>
       <h1
         onClick={inventory.length > 0 ? () => sellItem(inventory[0]) : null}
@@ -49,10 +56,14 @@ function ActionBar({ roomInfo: { exits, items, title }, playerInfo: {inventory},
   );
 }
 
-const mapStateToProps = ({ roomReducer: { roomInfo }, playerReducer: { playerInfo} }) => {
+const mapStateToProps = ({
+  roomReducer: { roomInfo, coolingDown },
+  playerReducer: { playerInfo }
+}) => {
   return {
     roomInfo,
-    playerInfo
+    playerInfo,
+    coolingDown
   };
 };
 

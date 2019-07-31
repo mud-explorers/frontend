@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { shopConverter } from '../../helper-functions/display-functions'
 
 function RoomDescription({
   roomInfo: { title, coordinates, room_id, description, items, players }
@@ -13,7 +14,7 @@ function RoomDescription({
 
       <div className="title_and_description">
         <h1 className="room_description_header">{title}</h1>
-        <p>{description}</p>
+        <p>{shopConverter(description, room_id)}</p>
       </div>
 
       <div className="items">

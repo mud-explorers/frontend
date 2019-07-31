@@ -1,4 +1,32 @@
 .map_container {
-    width: 75%;
-    background: #EFEFEF;
+  min-width: 1094px;
+  background: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+.grid_container {
+  display: grid;
+  grid-template-columns: repeat(26, 23px);
+  grid-template-rows: repeat(26, 23px);
+  
+
+  div {
+    // border: 0.5px solid black;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 5px solid #efefef;
+    // margin: 1%;
+  }
+
+  #active {
+      background: red;
+  }
+
+  .visited {
+    background: lightgrey;
+  }
+}
+
 }

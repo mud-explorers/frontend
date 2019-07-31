@@ -1,7 +1,7 @@
 import {
   INIT_PLAYER_FETCHING,
   INIT_PLAYER_SUCCESS,
-  INIT_PLAYER_FAILURE
+  INIT_PLAYER_FAILURE,
 } from "../actions/index";
 
 const initialState = {

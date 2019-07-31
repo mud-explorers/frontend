@@ -10,7 +10,8 @@ import {
   GET_ITEM_SUCCESS,
   SELL_ITEM_FAILURE,
   SELL_ITEM_FETCHING,
-  SELL_ITEM_SUCCESS
+  SELL_ITEM_SUCCESS,
+  UPDATE_COOLDOWN
 } from "../actions/index";
 
 const initialState = {
@@ -28,7 +29,8 @@ const initialState = {
     errors: [],
     messages: []
   },
-  loading: false
+  loading: false,
+  coolingDown: false
 };
 
 export const roomReducer = (state = initialState, action) => {
@@ -45,20 +47,24 @@ export const roomReducer = (state = initialState, action) => {
       return {
         ...state,
         roomInfo: {...action.payload},
-        loading: false
+        loading: false,
+        coolingDown: true
       };
     case INIT_ROOM_FAILURE:
-      return {
-        ...state,
-        roomInfo: { ...state.roomInfo, errors: [action.payload]},
-        loading: false
-      };
     case MOVE_ROOM_FAILURE:
     case GET_ITEM_FAILURE:
     case SELL_ITEM_FAILURE:
       return {
         ...state,
-        roomInfo: {...state.roomInfo, errors: [action.payload.errors[0]], cooldown: action.payload.cooldown}
+        roomInfo: {...state.roomInfo, errors: [action.payload.errors[0]], cooldown: action.payload.cooldown},
+        loading: false,
+        coolingDown: true
+      }
+    case UPDATE_COOLDOWN:
+      return {
+        ...state,
+        roomInfo: {...state.roomInfo, cooldown: action.payload},
+        coolingDown: false
       }
     default:
       return state;

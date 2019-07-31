@@ -30,7 +30,7 @@ function PlayerDescription({
           {inventory.length === 0 ? (
             <p>No items</p>
           ) : (
-            inventory.map(item => <span>{item}</span>)
+            inventory.map((item, i) => <span key={i}>{item}</span>)
           )}
         </div>
       </div>

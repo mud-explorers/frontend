@@ -11,10 +11,12 @@ import {
   GET_ITEM_SUCCESS,
   SELL_ITEM_FAILURE,
   SELL_ITEM_FETCHING,
-  SELL_ITEM_SUCCESS
+  SELL_ITEM_SUCCESS,
+  UPDATE_COOLDOWN
 } from "./index";
 
 import { canMove } from "../helper-functions/display-functions";
+import { getPlayer } from "./playerActions";
 
 export const getRoom = () => dispatch => {
   dispatch({
@@ -41,7 +43,7 @@ export const getRoom = () => dispatch => {
     .catch(error => {
       dispatch({
         type: INIT_ROOM_FAILURE,
-        payload: error
+        payload: error.response.data
       });
     });
 };
@@ -51,7 +53,7 @@ export const moveRoom = (direction, exits) => dispatch => {
     dispatch({
       type: MOVE_ROOM_FETCHING
     });
-  
+
     return axios
       .post(
         "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/",
@@ -64,6 +66,7 @@ export const moveRoom = (direction, exits) => dispatch => {
         }
       )
       .then(roomInfo => {
+        getPlayer();
         dispatch({
           type: MOVE_ROOM_SUCCESS,
           payload: roomInfo.data
@@ -76,11 +79,9 @@ export const moveRoom = (direction, exits) => dispatch => {
         });
       });
   } else {
-    return null
+    return null;
   }
-  
 };
-
 
 export const getItem = name => dispatch => {
   dispatch({
@@ -103,6 +104,10 @@ export const getItem = name => dispatch => {
         type: GET_ITEM_SUCCESS,
         payload: roomInfo.data
       });
+      setTimeout(() => {
+        dispatch(getPlayer())
+      }, 16000)
+      
     })
     .catch(error => {
       dispatch({
@@ -112,7 +117,7 @@ export const getItem = name => dispatch => {
     });
 };
 
-export const sellItem = (name) => dispatch => {
+export const sellItem = name => dispatch => {
   dispatch({
     type: SELL_ITEM_FETCHING
   });
@@ -120,7 +125,7 @@ export const sellItem = (name) => dispatch => {
   return axios
     .post(
       "https://lambda-treasure-hunt.herokuapp.com/api/adv/sell/",
-      {name: name, confirm: 'yes'},
+      { name: name, confirm: "yes" },
 
       {
         headers: {
@@ -134,6 +139,9 @@ export const sellItem = (name) => dispatch => {
         type: SELL_ITEM_SUCCESS,
         payload: roomInfo.data
       });
+      setTimeout(() => {
+        dispatch(getPlayer())
+      }, 6000)
     })
     .catch(error => {
       dispatch({
@@ -141,4 +149,11 @@ export const sellItem = (name) => dispatch => {
         payload: error.response.data
       });
     });
-}
+};
+
+export const updateCooldown = count => {
+  return {
+    type: UPDATE_COOLDOWN,
+    payload: count
+  };
+};
