@@ -4015,8 +4015,3 @@ export const hasBeenVisited = (i, j, visited) => {
   return false
 };
 
-export const getNeighbors = (neighbors, currentRoom, exits) => {
-
-
-}
-

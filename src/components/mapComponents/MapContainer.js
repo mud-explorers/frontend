@@ -13,11 +13,10 @@ function MapContainer({ map, roomInfo: { coordinates, exits }, visited }) {
         {map.map((row, i) => {
           if (i >= 50) {
             return row.map((_, j) => {
-              if (j >= 50) {
+              if (j >= 46) {
                 const currentRoom = hasBeenVisited(i, j, mapGraph)
                 const roomID = currentRoom[0]
-                const neighboringDirections = currentRoom[1]
-                const exits = currentRoom[2]
+                // const neighboringDirections = currentRoom[1]
                 return (
                   <div
                     key={`${i}, ${j}`}
@@ -25,7 +24,7 @@ function MapContainer({ map, roomInfo: { coordinates, exits }, visited }) {
                     className={roomID ? "visited" : ""}
                   >
                     {" "}
-                    {/* {hasBeenVisited(i, j, mapGraph) && `${hasBeenVisited(i, j, mapGraph)}` } */}
+                    {roomID && `${roomID}` }
                   </div>
                 );
               } else {

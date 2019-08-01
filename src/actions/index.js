@@ -14,6 +14,14 @@ export const GET_ITEM_FETCHING = "GET_ITEM_FETCHING";
 export const GET_ITEM_SUCCESS = "GET_ITEM_SUCCESS";
 export const GET_ITEM_FAILURE = "GET_ITEM_FAILURE";
 
+export const DROP_ITEM_FETCHING = "DROP_ITEM_FETCHING";
+export const DROP_ITEM_SUCCESS = "DROP_ITEM_SUCCESS";
+export const DROP_ITEM_FAILURE = "DROP_ITEM_FAILURE";
+
+export const PRAY_FETCHING = "PRAY_FETCHING";
+export const PRAY_SUCCESS = "PRAY_SUCCESS";
+export const PRAY_FAILURE = "PRAY_FAILURE";
+
 export const UPDATE_COOLDOWN = "UPDATE_COOLDOWN";
 
 // playerAction types

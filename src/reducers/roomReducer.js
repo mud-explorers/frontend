@@ -11,7 +11,13 @@ import {
   SELL_ITEM_FAILURE,
   SELL_ITEM_FETCHING,
   SELL_ITEM_SUCCESS,
-  UPDATE_COOLDOWN
+  UPDATE_COOLDOWN,
+  PRAY_FAILURE,
+  PRAY_FETCHING,
+  PRAY_SUCCESS,
+  DROP_ITEM_FAILURE,
+  DROP_ITEM_SUCCESS,
+  DROP_ITEM_FETCHING
 } from "../actions/index";
 
 const initialState = {
@@ -39,11 +45,15 @@ export const roomReducer = (state = initialState, action) => {
     case MOVE_ROOM_FETCHING:
     case GET_ITEM_FETCHING:
     case SELL_ITEM_FETCHING:
+    case PRAY_FETCHING:
+    case DROP_ITEM_FETCHING:
       return { ...state, loading: true };
     case INIT_ROOM_SUCCESS:
     case MOVE_ROOM_SUCCESS:
     case GET_ITEM_SUCCESS:
     case SELL_ITEM_SUCCESS:
+    case PRAY_SUCCESS:
+    case DROP_ITEM_SUCCESS:
       return {
         ...state,
         roomInfo: {...action.payload},
@@ -54,6 +64,8 @@ export const roomReducer = (state = initialState, action) => {
     case MOVE_ROOM_FAILURE:
     case GET_ITEM_FAILURE:
     case SELL_ITEM_FAILURE:
+    case PRAY_FAILURE:
+    case DROP_ITEM_FAILURE:
       return {
         ...state,
         roomInfo: {...state.roomInfo, errors: [action.payload.errors[0]], cooldown: action.payload.cooldown},

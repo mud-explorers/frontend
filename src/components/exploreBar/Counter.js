@@ -14,7 +14,7 @@ function Counter({ roomInfo: { cooldown }, updateCooldown, coolingDown }) {
     if (count > 0) {
       setCount(count - 1);
     }
-    if (count === 0 && coolingDown) {
+    if (count <= 0 && coolingDown) {
       updateCooldown(count)
     }
   }, 1000);
