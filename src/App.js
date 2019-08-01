@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Route, Switch } from "react-browser-router";
+import MapPage from "./views/MapPage";
+import NavBar from "./components/navBars/NavBar";
+import { getRoom } from "./actions/roomActions";
+import { getPlayer } from "./actions/playerActions";
+import { connect } from "react-redux";
 
-function App() {
+function App({ getRoom, getPlayer}) {
+  useEffect(() => {
+    getRoom();
+    getPlayer();
+  }, );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact component={MapPage} />
+      </Switch>
     </div>
   );
 }
 
-export default App;
+
+
+export default connect(
+  null,
+  { getRoom, getPlayer }
+)(App);
