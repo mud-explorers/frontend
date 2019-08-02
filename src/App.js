@@ -6,11 +6,13 @@ import { getRoom } from "./actions/roomActions";
 import { getPlayer } from "./actions/playerActions";
 import { connect } from "react-redux";
 
-function App({ getRoom, getPlayer}) {
+function App({ getRoom, getPlayer }) {
   useEffect(() => {
     getRoom();
-    getPlayer();
-  }, );
+    setTimeout(() => {
+      getPlayer();
+    }, 2000);
+  });
 
   return (
     <div className="App">
@@ -21,8 +23,6 @@ function App({ getRoom, getPlayer}) {
     </div>
   );
 }
-
-
 
 export default connect(
   null,
