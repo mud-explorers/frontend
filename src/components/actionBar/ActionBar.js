@@ -10,6 +10,7 @@ import {
 } from "../../actions/roomActions";
 import { mapGraph } from "../../dummy-data-structures/map-graph";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import { moveRoomOnKey } from '../../helper-functions/display-functions'
 
 function ActionBar({
   roomInfo: { exits, items, title, room_id, description },
@@ -21,34 +22,43 @@ function ActionBar({
   coolingDown,
   pray,
   dropItem
-}) {
-  // const left = "37";
-  // const up = "38";
-  // const right = "39";
-  // const down = "40";
+}) {;
 
-  const moveRoomOnKey = (key, e, coolingDown, exits, room_id, mapGraph) => {
-    if (key === 'up' && !coolingDown) {
+  const moveRoomOnKey = (
+    key,
+    e,
+    coolingDown,
+    exits,
+    room_id,
+    mapGraph, 
+    items,
+    inventory
+  ) => {
+    if (key === "up" && !coolingDown) {
       moveRoom("w", exits, room_id, mapGraph);
     }
-    if (key === 'left' && !coolingDown) {
+    if (key === "left" && !coolingDown) {
       moveRoom("s", exits, room_id, mapGraph);
     }
-    if (key === 'right' && !coolingDown) {
+    if (key === "right" && !coolingDown) {
       moveRoom("n", exits, room_id, mapGraph);
     }
-    if (key === 'down' && !coolingDown) {
+    if (key === "down" && !coolingDown) {
       moveRoom("e", exits, room_id, mapGraph);
     }
-    if (key === 'enter' && !coolingDown && items.length > 0) {
-      getItem(items[0])
+    if (key === "enter" && !coolingDown && items.length > 0) {
+      getItem(items[0]);
+    }
+    if (key === "s" && !coolingDown && inventory.length > 0) {
+      sellItem(inventory[0]);
     }
   };
+  
   return (
     <div className="action_bar_container">
       <KeyboardEventHandler
-        handleKeys={['all', '38', '37', '38', '39', '13']}
-        onKeyEvent={(key, e) => {moveRoomOnKey(key, e, coolingDown, exits, room_id, mapGraph)}}
+        handleKeys={['all', '38', '37', '38', '39', '13', 's']}
+        onKeyEvent={(key, e) => {moveRoomOnKey(key, e, coolingDown, exits, room_id, mapGraph, items, inventory)}}
       />
 
       <h1
@@ -94,7 +104,7 @@ function ActionBar({
       </h1>
       <h1
         onClick={items.length > 0 ? () => getItem(items[0]) : null}
-        className={items.length > 0 ? "active" : ""}
+        className={items.length > 0 && !coolingDown ? "active" : ""}
       >
         PICKUP
       </h1>
