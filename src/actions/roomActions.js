@@ -118,7 +118,7 @@ export const getItem = name => dispatch => {
       });
       setTimeout(() => {
         dispatch(getPlayer());
-      }, 16000);
+      }, 11000);
     })
     .catch(error => {
       dispatch({
@@ -151,7 +151,7 @@ export const dropItem = name => dispatch => {
       });
       setTimeout(() => {
         dispatch(getPlayer());
-      }, 16000);
+      }, 11000);
     })
     .catch(error => {
       dispatch({
@@ -185,7 +185,7 @@ export const sellItem = name => dispatch => {
       });
       setTimeout(() => {
         dispatch(getPlayer());
-      }, 6000);
+      }, 2000);
     })
     .catch(error => {
       dispatch({
