@@ -1,3 +1,5 @@
+
+
 export const validExit = (direction, exits) => {
   if (exits.includes(direction)) {
     return true;

@@ -24,7 +24,7 @@ function MapContainer({ map, roomInfo: { coordinates, exits }, visited }) {
                     className={roomID ? "visited" : ""}
                   >
                     {" "}
-                    {roomID && `${roomID}` }
+                    {/* {roomID && `${roomID}` } */}
                   </div>
                 );
               } else {
